@@ -53,16 +53,25 @@ return(
     <div className="search-books-results">
       <ol className="books-grid">
       {
-        this.state.searchedBooks.map(searchedBook => (
-          <li key={searchedBook.id}>
-          <Book
-          book={searchedBook}
-          moveShelf={this.props.  moveShelf}
+        this.state.searchedBooks.map(searchedBook => {
+          let shelf="none";
 
-          />
-          </li>
-        ))
-      }
+          this.props.books.map(book => (
+
+            book.id===searchedBook.id ?
+            shelf= book.shelf : ''
+          ));
+return(
+  <li key={searchedBook.id}>
+  <Book
+  book={searchedBook}
+  moveShelf={this.props.moveShelf}
+  currentShelf={shelf} // Search page books should be under NONE Category. move the current shelf to shelf var
+  />
+  </li>
+);
+})
+}
       </ol>
     </div>
   </div>
