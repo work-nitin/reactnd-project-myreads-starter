@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 
 class Book extends Component {
   render(){
+
 return(
   <div className="book">
     <div className="book-top">
@@ -9,7 +10,7 @@ return(
           backgroundImage:`url("${this.props.book.imageLinks.thumbnail}"`}}>
         </div>
       <div className="book-shelf-changer">
-        <select>
+        <select onChange={(event) =>this.props.moveShelf(this.props.book,event.target.value)}>
           <option value="move" disabled>Move to...</option>
           <option value="currentlyReading">Currently Reading</option>
           <option value="wantToRead">Want to Read</option>
@@ -27,4 +28,5 @@ return(
   }
 
 }
+
   export default Book;

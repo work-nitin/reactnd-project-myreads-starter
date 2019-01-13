@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import SearchPage from './SearchPage';
+//import SearchPage from './SearchPage';
 import MainPage from './MainPage';
 import * as BooksAPI from './BooksAPI';
 
@@ -14,11 +14,18 @@ componentDidMount()
     this.setState({books: books})
 })
 }
+
+moveShelf = (book,shelf) =>{
+  BooksAPI.update(book,shelf);
+}
   render() {
     return (
       <div className="app">
         <MainPage
-        books={this.state.books}/> 
+        books={this.state.books}
+        moveShelf={this.moveShelf}
+        />
+
       </div>
     )
   }
