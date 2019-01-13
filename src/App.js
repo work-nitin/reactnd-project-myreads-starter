@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-//import SearchPage from './SearchPage';
+import SearchPage from './SearchPage';
 import MainPage from './MainPage';
 import * as BooksAPI from './BooksAPI';
 
@@ -21,10 +21,11 @@ moveShelf = (book,shelf) =>{
   render() {
     return (
       <div className="app">
-        <MainPage
+  {      /*<MainPage
         books={this.state.books}
         moveShelf={this.moveShelf}
-        />
+        />*/}
+        <SearchPage/>
 
       </div>
     )
