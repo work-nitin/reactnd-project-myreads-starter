@@ -10,7 +10,9 @@ return(
           backgroundImage:`url("${this.props.book.imageLinks.thumbnail}"`}}>
         </div>
       <div className="book-shelf-changer">
-        <select onChange={(event) =>this.props.moveShelf(this.props.book,event.target.value)}>
+        <select onChange={(event) =>
+          this.props.moveShelf(this.props.book,event.target.value)}
+          defaultValue={this.props.currentShelf}>
           <option value="move" disabled>Move to...</option>
           <option value="currentlyReading">Currently Reading</option>
           <option value="wantToRead">Want to Read</option>
