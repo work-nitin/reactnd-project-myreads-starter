@@ -56,22 +56,15 @@ return(
       <ol className="books-grid">
       {
         this.state.searchedBooks
-        .map(searchedBook => {
-          let shelf="none";
-          this.props.books.map(book => (
-            book.id===searchedBook.id ? shelf= book.shelf : '' //If serached book is same as props.books.id then preserve the state else keep it as NONE
-          ));
-return(
-  <li key={searchedBook.id}>
-  <Book
-  book={searchedBook}
-  ChangeShelf={this.props.ChangeShelf}
-  currentShelf={shelf} // Search page books should be under NONE Category. move the current shelf to shelf var
-  />
-  </li>
-);
-})
-}
+        .map((searchedBook) => (
+          <li key={searchedBook.id}>
+          <Book
+            book={searchedBook}
+            ChangeShelf={this.props.ChangeShelf}
+            />
+            </li>
+          ))}
+
       </ol>
     </div>
   </div>
