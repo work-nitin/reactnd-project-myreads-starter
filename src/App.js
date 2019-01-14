@@ -1,8 +1,5 @@
 import React from 'react';
 import './App.css';
-//import SearchPage from './SearchPage';
-//import MainPage from './MainPage';
-
 import SearchPage from './Components/SearchPage';
 import MainPage from './Components/MainPage';
 
