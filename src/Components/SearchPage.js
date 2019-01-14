@@ -55,13 +55,11 @@ return(
     <div className="search-books-results">
       <ol className="books-grid">
       {
-        this.state.searchedBooks.map(searchedBook => {
+        this.state.searchedBooks
+        .map(searchedBook => {
           let shelf="none";
-
           this.props.books.map(book => (
-
-            book.id===searchedBook.id ?
-            shelf= book.shelf : ''
+            book.id===searchedBook.id ? shelf= book.shelf : '' //If serached book is same as props.books.id then preserve the state else keep it as NONE
           ));
 return(
   <li key={searchedBook.id}>

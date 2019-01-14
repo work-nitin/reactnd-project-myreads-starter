@@ -46,7 +46,6 @@ class MainPage extends Component {
                       book={book}
                       ChangeShelf={this.props.ChangeShelf}
                       currentShelf={book.shelf}
-
                       />
                     </li>
                   ))
@@ -61,13 +60,12 @@ class MainPage extends Component {
                 {
                   this.props.books
                   .filter(book => book.shelf === 'read')
-                  .   map(book => (
+                  .map(book => (
                     <li key={book.id}>
                       <Book
                       book={book}
                       ChangeShelf={this.props.ChangeShelf}
                       currentShelf={book.shelf}
-
                       />
                     </li>
                   ))
