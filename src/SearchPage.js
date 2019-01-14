@@ -3,24 +3,27 @@ import * as BooksAPI from './BooksAPI';
 import Book from './Book';
 import { Link } from 'react-router-dom';
 
-
+/* Add a search page componet extends from main page*/
 class SearchPage extends Component {
     state = {
-    query:'',
-     searchedBooks: []
+    searchData:'',
+    searchedBooks: [] //declare an empty array for searchedBook
   }
-  updateQuery = (query) =>{
+
+/***********************************************************************************************/
+  /* Function to update according to the search searchData text and look for the best possible match
+  and if searchData doesnt exist , set state an empty array for Books*/
+  updatesearchData = (searchData) =>{
     this.setState({
-      query:query
+    searchData:searchData
     })
-
-    this.updateSearchedBooks(query);
+    this.updateSearchedBooks(searchData);
   }
 
-  updateSearchedBooks = (query) =>{
-    if(query)
+  updateSearchedBooks = (searchData) =>{
+    if(searchData)
     {
-      BooksAPI.search(query).then((searchedBooks) => {
+      BooksAPI.search(searchData).then((searchedBooks) => {
         if (searchedBooks.error){
           this.setState({searchedBooks: []}); // For pass empty error to be passed to map method used in Rendering UI
         } else {
@@ -28,26 +31,25 @@ class SearchPage extends Component {
         }
     })
   }
-/* if no book matched the searched query*/
+
+/* if no book matched the searchData set the empty array*/
   else {
       this.setState({searchedBooks: []});
     }
   }
-
+/***********************************************************************************************/
+/* render view to UI*/
   render(){
-
 return(
   <div className="search-books">
     <div className="search-books-bar">
     <Link className="close-search" to="/">Close</Link>
-
       <div className="search-books-input-wrapper">
-
-        <input type="text" placeholder="Search by title or author"
-          value={this.state.query}
-          onChange={(event) => this.updateQuery(event.target.value)}
+        <input type="text"
+        placeholder="Search by title or author"
+          value={this.state.searchData}
+          onChange={(event) => this.updatesearchData(event.target.value)}
         />
-
       </div>
     </div>
     <div className="search-books-results">
@@ -65,7 +67,7 @@ return(
   <li key={searchedBook.id}>
   <Book
   book={searchedBook}
-  moveShelf={this.props.moveShelf}
+  ChangeShelf={this.props.ChangeShelf}
   currentShelf={shelf} // Search page books should be under NONE Category. move the current shelf to shelf var
   />
   </li>
